@@ -1,6 +1,7 @@
 package rocks.zipcode.io.fundamentals;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -12,13 +13,16 @@ public class StringUtils {
      * @return collection containing all permutations of casing of this string
      */
     public static Collection<String> getAllCasings(String string) {
+        Collection<String> collection = new ArrayList<>();
         // get length of string
+        int length = string.length();
         // get range of length
+
         // get power-set of range
 
         // for every set in power-set
             // uppercase indices of string using set
-        return null;
+        return collection;
     }
 
     /**
@@ -27,7 +31,11 @@ public class StringUtils {
      * @return near-identical string whose characters at specified indices are capitalized
      */
     public static String upperCaseIndices(String string, Integer... indices) {
-        return null;
+        StringBuilder word = new StringBuilder(string);
+        for (Integer index: indices) {
+            word.setCharAt(index,Character.toUpperCase(word.charAt(index)));
+        }
+        return word.toString();
     }
 
     /**
@@ -37,7 +45,8 @@ public class StringUtils {
      * @return near-identical string with `valueToBeInserted` inserted at `index`
      */
     public static String insertAtIndex(String stringToBeManipulated, String valueToBeInserted, Integer index) {
-        return null;
+        String newWord = stringToBeManipulated.substring(0,index) + valueToBeInserted + stringToBeManipulated.substring(index);
+        return newWord;
     }
 
     /**
@@ -47,6 +56,8 @@ public class StringUtils {
      * @return near-identical string with character at `index` replaced with `replacementValue`
      */
     public static String replaceAtIndex(String stringToBeManipulated, Character replacementValue, Integer index) {
-        return null;
+        StringBuilder word = new StringBuilder(stringToBeManipulated);
+        word.setCharAt(index,replacementValue);
+        return word.toString();
     }
 }

@@ -1,7 +1,10 @@
 package rocks.zipcode.io.collections;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CollectionUtils {
 
@@ -11,7 +14,8 @@ public class CollectionUtils {
      * @return list with identical contents
      */
     public static <E> List<E> toList(Collection collection) {
-        return null;
+        List<E> list = (List<E>) collection.stream().collect(Collectors.toList());
+        return list;
     }
 
     /**
@@ -20,7 +24,12 @@ public class CollectionUtils {
      * @return true if `nestedCollection` contains a collection with contents identical to `collection`
      */
     public static Boolean contains(Collection<? extends Collection<?>> nestedCollection, Collection<?> collection) {
-        return null;
+        for (Collection<?> collectionType: nestedCollection) {
+            if(collectionType == collection) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -28,7 +37,11 @@ public class CollectionUtils {
      * @return a single collection containing each of the collections passed in as an argument
      */
     public static Collection<? extends Collection<?>> nest(Collection<?>... collections) {
-        return null;
+        Collection<Collection<?>> nestedCollections = new ArrayList<Collection<?>>();
+        for (Collection<?> typeOfCollection:collections) {
+            nestedCollections.add(typeOfCollection);
+        }
+        return nestedCollections;
     }
 
     /**
@@ -36,6 +49,10 @@ public class CollectionUtils {
      * @return a single collection containing the aggregate contents of each collection passed in as an argument
      */
     public static Collection<?> flatten(Collection<?>... collections) {
-        return null;
+        Collection<?> flattenedCollection = new ArrayList<>();
+//        for (Collection<?> collection: collections) {
+////            collection.forEach(flattenedCollection::add);
+////        }
+        return flattenedCollection;
     }
 }
